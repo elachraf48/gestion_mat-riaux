@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="SERVICES_RESSOURCES_FINANCIERESModelStoreContainer" CdmEntityContainer="SERVICES_RESSOURCES_FINANCIERESEntities1">
+    <EntitySetMapping Name="bureau">
+      <EntityTypeMapping TypeName="SERVICES_RESSOURCES_FINANCIERESModel.bureau">
+        <MappingFragment StoreEntitySet="bureau">
+          <ScalarProperty Name="id_bureau" ColumnName="id_bureau" />
+          <ScalarProperty Name="nom_bureau" ColumnName="nom_bureau" />
+          <ScalarProperty Name="id_service" ColumnName="id_service" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="detail_materiel">
+      <EntityTypeMapping TypeName="SERVICES_RESSOURCES_FINANCIERESModel.detail_materiel">
+        <MappingFragment StoreEntitySet="detail_materiel">
+          <ScalarProperty Name="id_materiel" ColumnName="id_materiel" />
+          <ScalarProperty Name="id_type_materiel" ColumnName="id_type_materiel" />
+          <ScalarProperty Name="fiche_technique" ColumnName="fiche_technique" />
+          <ScalarProperty Name="etat" ColumnName="etat" />
+          <ScalarProperty Name="date_entr" ColumnName="date_entr" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="histoir">
+      <EntityTypeMapping TypeName="SERVICES_RESSOURCES_FINANCIERESModel.histoir">
+        <MappingFragment StoreEntitySet="histoir">
+          <ScalarProperty Name="id_histoir" ColumnName="id_histoir" />
+          <ScalarProperty Name="id_bureau" ColumnName="id_bureau" />
+          <ScalarProperty Name="id_materiel" ColumnName="id_materiel" />
+          <ScalarProperty Name="date_histoir" ColumnName="date_histoir" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="materiel">
+      <EntityTypeMapping TypeName="SERVICES_RESSOURCES_FINANCIERESModel.materiel">
+        <MappingFragment StoreEntitySet="materiel">
+          <ScalarProperty Name="id_bureau" ColumnName="id_bureau" />
+          <ScalarProperty Name="id_type_materiel" ColumnName="id_type_materiel" />
+          <ScalarProperty Name="id_materiel" ColumnName="id_materiel" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="materiel_difectue">
+      <EntityTypeMapping TypeName="SERVICES_RESSOURCES_FINANCIERESModel.materiel_difectue">
+        <MappingFragment StoreEntitySet="materiel_difectue">
+          <ScalarProperty Name="id_materiel" ColumnName="id_materiel" />
+          <ScalarProperty Name="description_MD" ColumnName="description_MD" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="type_materiel">
+      <EntityTypeMapping TypeName="SERVICES_RESSOURCES_FINANCIERESModel.type_materiel">
+        <MappingFragment StoreEntitySet="type_materiel">
+          <ScalarProperty Name="id_type_materiel" ColumnName="id_type_materiel" />
+          <ScalarProperty Name="libelle" ColumnName="libelle" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="type_service">
+      <EntityTypeMapping TypeName="SERVICES_RESSOURCES_FINANCIERESModel.type_service">
+        <MappingFragment StoreEntitySet="type_service">
+          <ScalarProperty Name="id_service" ColumnName="id_service" />
+          <ScalarProperty Name="nom_type" ColumnName="nom_type" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

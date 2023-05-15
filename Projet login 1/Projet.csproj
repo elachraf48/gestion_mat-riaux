@@ -1,0 +1,414 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{3ED2D001-6DF0-4709-9DEB-464AA814AF99}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Projet_login_1</RootNamespace>
+    <AssemblyName>Projet login 1</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>telecharger.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AxShockwaveFlashObjects, Version=1.0.0.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="Bunifu_UI_v1.5.3">
+      <HintPath>..\..\..\Bunifu\Bunifu_UI_v1.5.3.dll</HintPath>
+    </Reference>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Acceuil.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Acceuil.Designer.cs">
+      <DependentUpon>Acceuil.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ajoute.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ajoute.Designer.cs">
+      <DependentUpon>ajoute.cs</DependentUpon>
+    </Compile>
+    <Compile Include="bureau.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="cherchier.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="cherchier.Designer.cs">
+      <DependentUpon>cherchier.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CrystalReport1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CrystalReport1.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="detail materiel rp.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>detail materiel rp.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="detail_materiel.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="gestion de stock.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="gestion de stock.Designer.cs">
+      <DependentUpon>gestion de stock.cs</DependentUpon>
+    </Compile>
+    <Compile Include="histoir.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="materiel.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="materiel_.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="materiel_.Designer.cs">
+      <DependentUpon>materiel_.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Impriment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Impriment.Designer.cs">
+      <DependentUpon>Impriment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="asces2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="asces2.Designer.cs">
+      <DependentUpon>asces2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="asces1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="asces1.Designer.cs">
+      <DependentUpon>asces1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controle_et_contentien.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controle_et_contentien.Designer.cs">
+      <DependentUpon>Controle_et_contentien.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Assiette.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Assiette.Designer.cs">
+      <DependentUpon>Assiette.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Login.Designer.cs">
+      <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="materiel_bon.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>materiel_bon.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="materiel_def.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>materiel_def.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="materiel_difectue.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="materiel_service.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>materiel_service.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Model1.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="resultate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="resultate.Designer.cs">
+      <DependentUpon>resultate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="type_materiel.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="type_service.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="verf.cs" />
+    <EmbeddedResource Include="Acceuil.resx">
+      <DependentUpon>Acceuil.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ajoute.resx">
+      <DependentUpon>ajoute.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="cherchier.resx">
+      <DependentUpon>cherchier.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CrystalReport1.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CrystalReport1.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="detail materiel rp.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>detail materiel rp.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="gestion de stock.resx">
+      <DependentUpon>gestion de stock.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="materiel_.resx">
+      <DependentUpon>materiel_.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Impriment.resx">
+      <DependentUpon>Impriment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="asces2.resx">
+      <DependentUpon>asces2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="asces1.resx">
+      <DependentUpon>asces1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controle_et_contentien.resx">
+      <DependentUpon>Controle_et_contentien.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Assiette.resx">
+      <DependentUpon>Assiette.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Login.resx">
+      <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="materiel_bon.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>materiel_bon.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="materiel_def.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>materiel_def.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="materiel_service.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>materiel_service.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="resultate.resx">
+      <DependentUpon>resultate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EntityDeploy Include="Model1.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Model1.edmx.diagram">
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-fermer-50.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-chevron-bas-50.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-fermer-64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-fermer-64 %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-fermer-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-chevron-bas-501.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-security-shield-green-50.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-bouclier-de-sécurité-vert-m50.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-bouclier-de-sécurité-vert-501.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-uchiha-eyes-50-3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-uchiha-eyes-50-2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-cacher-50.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\portable-document-format.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\target %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\supplier.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\supplier %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\portable-document-format %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-sortie-de-secours-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-sortie-de-secours-52.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\register.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-webcam-intégrée-50.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\26534056-27244273.jpg" />
+    <None Include="Resources\1497540.png" />
+    <None Include="Resources\COMPTEUSE DE BILLET.jpg" />
+    <None Include="Resources\external_hard_disk_hdd_usb_drive_storage_space_memory_icon-icons.com_53552.png" />
+    <None Include="Resources\Printer_Scanner_Photocopier_Samsung_SCX-6545_43285.png" />
+    <None Include="Resources\pngegg.png" />
+    <None Include="Resources\gst2 %282%29.png" />
+    <None Include="Resources\gst3.png" />
+    <None Include="Resources\gst4.png" />
+    <None Include="Resources\gst1.png" />
+    <None Include="Resources\imprimer.png" />
+    <None Include="Resources\static.png" />
+    <None Include="Resources\matereil.png" />
+    <None Include="Resources\Imprimer1.png" />
+    <None Include="Resources\ajoute matereil.png" />
+    <None Include="Resources\control.png" />
+    <None Include="Resources\assit.png" />
+    <None Include="Resources\ferme12.png" />
+    <None Include="Resources\max.png" />
+    <None Include="Resources\min.png" />
+    <None Include="Resources\menu.png" />
+    <None Include="Resources\searh12.png" />
+    <None Include="Resources\1486506281-hierarchy-organization-team-diagram-order-hierarchical-structure-teamwork_81472.png" />
+    <None Include="Resources\1486506281-hierarchy-organization-team-diagram-order-hierarchical-structure-teamwork_81472 %281%29.png" />
+    <Content Include="Model1.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Model1.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.cs</LastGenOutput>
+    </Content>
+    <Content Include="telecharger.ico" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

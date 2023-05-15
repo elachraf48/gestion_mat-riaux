@@ -1,0 +1,512 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="SERVICES_RESSOURCES_FINANCIERESModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="bureau">
+          <Key>
+            <PropertyRef Name="id_bureau" />
+          </Key>
+          <Property Name="id_bureau" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="nom_bureau" Type="varchar" MaxLength="100" />
+          <Property Name="id_service" Type="int" />
+        </EntityType>
+        <EntityType Name="detail_materiel">
+          <Key>
+            <PropertyRef Name="id_materiel" />
+          </Key>
+          <Property Name="id_materiel" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_type_materiel" Type="int" />
+          <Property Name="fiche_technique" Type="varchar(max)" />
+          <Property Name="etat" Type="varchar" MaxLength="20" />
+          <Property Name="date_entr" Type="date" />
+          <Property Name="Quantity" Type="int" />
+        </EntityType>
+        <EntityType Name="histoir">
+          <Key>
+            <PropertyRef Name="id_histoir" />
+          </Key>
+          <Property Name="id_histoir" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_bureau" Type="varchar" MaxLength="20" />
+          <Property Name="id_materiel" Type="int" />
+          <Property Name="date_histoir" Type="datetime" />
+        </EntityType>
+        <EntityType Name="materiel">
+          <Key>
+            <PropertyRef Name="id_type_materiel" />
+            <PropertyRef Name="id_materiel" />
+          </Key>
+          <Property Name="id_bureau" Type="varchar" MaxLength="20" />
+          <Property Name="id_type_materiel" Type="int" Nullable="false" />
+          <Property Name="id_materiel" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="materiel_difectue">
+          <Key>
+            <PropertyRef Name="id_materiel" />
+          </Key>
+          <Property Name="id_materiel" Type="int" Nullable="false" />
+          <Property Name="description_MD" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="type_materiel">
+          <Key>
+            <PropertyRef Name="id_type_materiel" />
+          </Key>
+          <Property Name="id_type_materiel" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="libelle" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="type_service">
+          <Key>
+            <PropertyRef Name="id_service" />
+          </Key>
+          <Property Name="id_service" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nom_type" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <Association Name="FK__bureau__id_servi__4222D4EF">
+          <End Role="type_service" Type="Self.type_service" Multiplicity="0..1" />
+          <End Role="bureau" Type="Self.bureau" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="type_service">
+              <PropertyRef Name="id_service" />
+            </Principal>
+            <Dependent Role="bureau">
+              <PropertyRef Name="id_service" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__detail_ma__id_ty__4316F928">
+          <End Role="type_materiel" Type="Self.type_materiel" Multiplicity="0..1" />
+          <End Role="detail_materiel" Type="Self.detail_materiel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="type_materiel">
+              <PropertyRef Name="id_type_materiel" />
+            </Principal>
+            <Dependent Role="detail_materiel">
+              <PropertyRef Name="id_type_materiel" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__histoir__id_bure__6FE99F9F">
+          <End Role="bureau" Type="Self.bureau" Multiplicity="0..1" />
+          <End Role="histoir" Type="Self.histoir" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="bureau">
+              <PropertyRef Name="id_bureau" />
+            </Principal>
+            <Dependent Role="histoir">
+              <PropertyRef Name="id_bureau" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__histoir__id_mate__70DDC3D8">
+          <End Role="detail_materiel" Type="Self.detail_materiel" Multiplicity="0..1" />
+          <End Role="histoir" Type="Self.histoir" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="detail_materiel">
+              <PropertyRef Name="id_materiel" />
+            </Principal>
+            <Dependent Role="histoir">
+              <PropertyRef Name="id_materiel" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__materiel___id_ma__46E78A0C">
+          <End Role="detail_materiel" Type="Self.detail_materiel" Multiplicity="1" />
+          <End Role="materiel_difectue" Type="Self.materiel_difectue" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="detail_materiel">
+              <PropertyRef Name="id_materiel" />
+            </Principal>
+            <Dependent Role="materiel_difectue">
+              <PropertyRef Name="id_materiel" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__materiel__id_bur__440B1D61">
+          <End Role="bureau" Type="Self.bureau" Multiplicity="0..1" />
+          <End Role="materiel" Type="Self.materiel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="bureau">
+              <PropertyRef Name="id_bureau" />
+            </Principal>
+            <Dependent Role="materiel">
+              <PropertyRef Name="id_bureau" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__materiel__id_mat__45F365D3">
+          <End Role="detail_materiel" Type="Self.detail_materiel" Multiplicity="1" />
+          <End Role="materiel" Type="Self.materiel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="detail_materiel">
+              <PropertyRef Name="id_materiel" />
+            </Principal>
+            <Dependent Role="materiel">
+              <PropertyRef Name="id_materiel" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__materiel__id_typ__44FF419A">
+          <End Role="type_materiel" Type="Self.type_materiel" Multiplicity="1" />
+          <End Role="materiel" Type="Self.materiel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="type_materiel">
+              <PropertyRef Name="id_type_materiel" />
+            </Principal>
+            <Dependent Role="materiel">
+              <PropertyRef Name="id_type_materiel" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SERVICES_RESSOURCES_FINANCIERESModelStoreContainer">
+          <EntitySet Name="bureau" EntityType="Self.bureau" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="detail_materiel" EntityType="Self.detail_materiel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="histoir" EntityType="Self.histoir" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="materiel" EntityType="Self.materiel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="materiel_difectue" EntityType="Self.materiel_difectue" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="type_materiel" EntityType="Self.type_materiel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="type_service" EntityType="Self.type_service" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__bureau__id_servi__4222D4EF" Association="Self.FK__bureau__id_servi__4222D4EF">
+            <End Role="type_service" EntitySet="type_service" />
+            <End Role="bureau" EntitySet="bureau" />
+          </AssociationSet>
+          <AssociationSet Name="FK__detail_ma__id_ty__4316F928" Association="Self.FK__detail_ma__id_ty__4316F928">
+            <End Role="type_materiel" EntitySet="type_materiel" />
+            <End Role="detail_materiel" EntitySet="detail_materiel" />
+          </AssociationSet>
+          <AssociationSet Name="FK__histoir__id_bure__6FE99F9F" Association="Self.FK__histoir__id_bure__6FE99F9F">
+            <End Role="bureau" EntitySet="bureau" />
+            <End Role="histoir" EntitySet="histoir" />
+          </AssociationSet>
+          <AssociationSet Name="FK__histoir__id_mate__70DDC3D8" Association="Self.FK__histoir__id_mate__70DDC3D8">
+            <End Role="detail_materiel" EntitySet="detail_materiel" />
+            <End Role="histoir" EntitySet="histoir" />
+          </AssociationSet>
+          <AssociationSet Name="FK__materiel___id_ma__46E78A0C" Association="Self.FK__materiel___id_ma__46E78A0C">
+            <End Role="detail_materiel" EntitySet="detail_materiel" />
+            <End Role="materiel_difectue" EntitySet="materiel_difectue" />
+          </AssociationSet>
+          <AssociationSet Name="FK__materiel__id_bur__440B1D61" Association="Self.FK__materiel__id_bur__440B1D61">
+            <End Role="bureau" EntitySet="bureau" />
+            <End Role="materiel" EntitySet="materiel" />
+          </AssociationSet>
+          <AssociationSet Name="FK__materiel__id_mat__45F365D3" Association="Self.FK__materiel__id_mat__45F365D3">
+            <End Role="detail_materiel" EntitySet="detail_materiel" />
+            <End Role="materiel" EntitySet="materiel" />
+          </AssociationSet>
+          <AssociationSet Name="FK__materiel__id_typ__44FF419A" Association="Self.FK__materiel__id_typ__44FF419A">
+            <End Role="type_materiel" EntitySet="type_materiel" />
+            <End Role="materiel" EntitySet="materiel" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SERVICES_RESSOURCES_FINANCIERESModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="bureau">
+          <Key>
+            <PropertyRef Name="id_bureau" />
+          </Key>
+          <Property Name="id_bureau" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="nom_bureau" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="id_service" Type="Int32" />
+          <NavigationProperty Name="type_service" Relationship="Self.FK__bureau__id_servi__4222D4EF" FromRole="bureau" ToRole="type_service" />
+          <NavigationProperty Name="histoir" Relationship="Self.FK__histoir__id_bure__6FE99F9F" FromRole="bureau" ToRole="histoir" />
+          <NavigationProperty Name="materiel" Relationship="Self.FK__materiel__id_bur__440B1D61" FromRole="bureau" ToRole="materiel" />
+        </EntityType>
+        <EntityType Name="detail_materiel">
+          <Key>
+            <PropertyRef Name="id_materiel" />
+          </Key>
+          <Property Name="id_materiel" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_type_materiel" Type="Int32" />
+          <Property Name="fiche_technique" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="etat" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="date_entr" Type="DateTime" Precision="0" />
+          <Property Name="Quantity" Type="Int32" />
+          <NavigationProperty Name="type_materiel" Relationship="Self.FK__detail_ma__id_ty__4316F928" FromRole="detail_materiel" ToRole="type_materiel" />
+          <NavigationProperty Name="histoir" Relationship="Self.FK__histoir__id_mate__70DDC3D8" FromRole="detail_materiel" ToRole="histoir" />
+          <NavigationProperty Name="materiel_difectue" Relationship="Self.FK__materiel___id_ma__46E78A0C" FromRole="detail_materiel" ToRole="materiel_difectue" />
+          <NavigationProperty Name="materiel" Relationship="Self.FK__materiel__id_mat__45F365D3" FromRole="detail_materiel" ToRole="materiel" />
+        </EntityType>
+        <EntityType Name="histoir">
+          <Key>
+            <PropertyRef Name="id_histoir" />
+          </Key>
+          <Property Name="id_histoir" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_bureau" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="id_materiel" Type="Int32" />
+          <Property Name="date_histoir" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="bureau" Relationship="Self.FK__histoir__id_bure__6FE99F9F" FromRole="histoir" ToRole="bureau" />
+          <NavigationProperty Name="detail_materiel" Relationship="Self.FK__histoir__id_mate__70DDC3D8" FromRole="histoir" ToRole="detail_materiel" />
+        </EntityType>
+        <EntityType Name="materiel">
+          <Key>
+            <PropertyRef Name="id_type_materiel" />
+            <PropertyRef Name="id_materiel" />
+          </Key>
+          <Property Name="id_bureau" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="id_type_materiel" Type="Int32" Nullable="false" />
+          <Property Name="id_materiel" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="bureau" Relationship="Self.FK__materiel__id_bur__440B1D61" FromRole="materiel" ToRole="bureau" />
+          <NavigationProperty Name="detail_materiel" Relationship="Self.FK__materiel__id_mat__45F365D3" FromRole="materiel" ToRole="detail_materiel" />
+          <NavigationProperty Name="type_materiel" Relationship="Self.FK__materiel__id_typ__44FF419A" FromRole="materiel" ToRole="type_materiel" />
+        </EntityType>
+        <EntityType Name="materiel_difectue">
+          <Key>
+            <PropertyRef Name="id_materiel" />
+          </Key>
+          <Property Name="id_materiel" Type="Int32" Nullable="false" />
+          <Property Name="description_MD" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="detail_materiel" Relationship="Self.FK__materiel___id_ma__46E78A0C" FromRole="materiel_difectue" ToRole="detail_materiel" />
+        </EntityType>
+        <EntityType Name="type_materiel">
+          <Key>
+            <PropertyRef Name="id_type_materiel" />
+          </Key>
+          <Property Name="id_type_materiel" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="libelle" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="detail_materiel" Relationship="Self.FK__detail_ma__id_ty__4316F928" FromRole="type_materiel" ToRole="detail_materiel" />
+          <NavigationProperty Name="materiel" Relationship="Self.FK__materiel__id_typ__44FF419A" FromRole="type_materiel" ToRole="materiel" />
+        </EntityType>
+        <EntityType Name="type_service">
+          <Key>
+            <PropertyRef Name="id_service" />
+          </Key>
+          <Property Name="id_service" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nom_type" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="bureau" Relationship="Self.FK__bureau__id_servi__4222D4EF" FromRole="type_service" ToRole="bureau" />
+        </EntityType>
+        <Association Name="FK__bureau__id_servi__4222D4EF">
+          <End Role="type_service" Type="Self.type_service" Multiplicity="0..1" />
+          <End Role="bureau" Type="Self.bureau" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="type_service">
+              <PropertyRef Name="id_service" />
+            </Principal>
+            <Dependent Role="bureau">
+              <PropertyRef Name="id_service" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__histoir__id_bure__6FE99F9F">
+          <End Role="bureau" Type="Self.bureau" Multiplicity="0..1" />
+          <End Role="histoir" Type="Self.histoir" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="bureau">
+              <PropertyRef Name="id_bureau" />
+            </Principal>
+            <Dependent Role="histoir">
+              <PropertyRef Name="id_bureau" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__materiel__id_bur__440B1D61">
+          <End Role="bureau" Type="Self.bureau" Multiplicity="0..1" />
+          <End Role="materiel" Type="Self.materiel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="bureau">
+              <PropertyRef Name="id_bureau" />
+            </Principal>
+            <Dependent Role="materiel">
+              <PropertyRef Name="id_bureau" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__detail_ma__id_ty__4316F928">
+          <End Role="type_materiel" Type="Self.type_materiel" Multiplicity="0..1" />
+          <End Role="detail_materiel" Type="Self.detail_materiel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="type_materiel">
+              <PropertyRef Name="id_type_materiel" />
+            </Principal>
+            <Dependent Role="detail_materiel">
+              <PropertyRef Name="id_type_materiel" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__histoir__id_mate__70DDC3D8">
+          <End Role="detail_materiel" Type="Self.detail_materiel" Multiplicity="0..1" />
+          <End Role="histoir" Type="Self.histoir" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="detail_materiel">
+              <PropertyRef Name="id_materiel" />
+            </Principal>
+            <Dependent Role="histoir">
+              <PropertyRef Name="id_materiel" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__materiel___id_ma__46E78A0C">
+          <End Role="detail_materiel" Type="Self.detail_materiel" Multiplicity="1" />
+          <End Role="materiel_difectue" Type="Self.materiel_difectue" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="detail_materiel">
+              <PropertyRef Name="id_materiel" />
+            </Principal>
+            <Dependent Role="materiel_difectue">
+              <PropertyRef Name="id_materiel" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__materiel__id_mat__45F365D3">
+          <End Role="detail_materiel" Type="Self.detail_materiel" Multiplicity="1" />
+          <End Role="materiel" Type="Self.materiel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="detail_materiel">
+              <PropertyRef Name="id_materiel" />
+            </Principal>
+            <Dependent Role="materiel">
+              <PropertyRef Name="id_materiel" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__materiel__id_typ__44FF419A">
+          <End Role="type_materiel" Type="Self.type_materiel" Multiplicity="1" />
+          <End Role="materiel" Type="Self.materiel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="type_materiel">
+              <PropertyRef Name="id_type_materiel" />
+            </Principal>
+            <Dependent Role="materiel">
+              <PropertyRef Name="id_type_materiel" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SERVICES_RESSOURCES_FINANCIERESEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="bureau" EntityType="Self.bureau" />
+          <EntitySet Name="detail_materiel" EntityType="Self.detail_materiel" />
+          <EntitySet Name="histoir" EntityType="Self.histoir" />
+          <EntitySet Name="materiel" EntityType="Self.materiel" />
+          <EntitySet Name="materiel_difectue" EntityType="Self.materiel_difectue" />
+          <EntitySet Name="type_materiel" EntityType="Self.type_materiel" />
+          <EntitySet Name="type_service" EntityType="Self.type_service" />
+          <AssociationSet Name="FK__bureau__id_servi__4222D4EF" Association="Self.FK__bureau__id_servi__4222D4EF">
+            <End Role="type_service" EntitySet="type_service" />
+            <End Role="bureau" EntitySet="bureau" />
+          </AssociationSet>
+          <AssociationSet Name="FK__histoir__id_bure__6FE99F9F" Association="Self.FK__histoir__id_bure__6FE99F9F">
+            <End Role="bureau" EntitySet="bureau" />
+            <End Role="histoir" EntitySet="histoir" />
+          </AssociationSet>
+          <AssociationSet Name="FK__materiel__id_bur__440B1D61" Association="Self.FK__materiel__id_bur__440B1D61">
+            <End Role="bureau" EntitySet="bureau" />
+            <End Role="materiel" EntitySet="materiel" />
+          </AssociationSet>
+          <AssociationSet Name="FK__detail_ma__id_ty__4316F928" Association="Self.FK__detail_ma__id_ty__4316F928">
+            <End Role="type_materiel" EntitySet="type_materiel" />
+            <End Role="detail_materiel" EntitySet="detail_materiel" />
+          </AssociationSet>
+          <AssociationSet Name="FK__histoir__id_mate__70DDC3D8" Association="Self.FK__histoir__id_mate__70DDC3D8">
+            <End Role="detail_materiel" EntitySet="detail_materiel" />
+            <End Role="histoir" EntitySet="histoir" />
+          </AssociationSet>
+          <AssociationSet Name="FK__materiel___id_ma__46E78A0C" Association="Self.FK__materiel___id_ma__46E78A0C">
+            <End Role="detail_materiel" EntitySet="detail_materiel" />
+            <End Role="materiel_difectue" EntitySet="materiel_difectue" />
+          </AssociationSet>
+          <AssociationSet Name="FK__materiel__id_mat__45F365D3" Association="Self.FK__materiel__id_mat__45F365D3">
+            <End Role="detail_materiel" EntitySet="detail_materiel" />
+            <End Role="materiel" EntitySet="materiel" />
+          </AssociationSet>
+          <AssociationSet Name="FK__materiel__id_typ__44FF419A" Association="Self.FK__materiel__id_typ__44FF419A">
+            <End Role="type_materiel" EntitySet="type_materiel" />
+            <End Role="materiel" EntitySet="materiel" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SERVICES_RESSOURCES_FINANCIERESModelStoreContainer" CdmEntityContainer="SERVICES_RESSOURCES_FINANCIERESEntities1">
+          <EntitySetMapping Name="bureau">
+            <EntityTypeMapping TypeName="SERVICES_RESSOURCES_FINANCIERESModel.bureau">
+              <MappingFragment StoreEntitySet="bureau">
+                <ScalarProperty Name="id_bureau" ColumnName="id_bureau" />
+                <ScalarProperty Name="nom_bureau" ColumnName="nom_bureau" />
+                <ScalarProperty Name="id_service" ColumnName="id_service" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="detail_materiel">
+            <EntityTypeMapping TypeName="SERVICES_RESSOURCES_FINANCIERESModel.detail_materiel">
+              <MappingFragment StoreEntitySet="detail_materiel">
+                <ScalarProperty Name="id_materiel" ColumnName="id_materiel" />
+                <ScalarProperty Name="id_type_materiel" ColumnName="id_type_materiel" />
+                <ScalarProperty Name="fiche_technique" ColumnName="fiche_technique" />
+                <ScalarProperty Name="etat" ColumnName="etat" />
+                <ScalarProperty Name="date_entr" ColumnName="date_entr" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="histoir">
+            <EntityTypeMapping TypeName="SERVICES_RESSOURCES_FINANCIERESModel.histoir">
+              <MappingFragment StoreEntitySet="histoir">
+                <ScalarProperty Name="id_histoir" ColumnName="id_histoir" />
+                <ScalarProperty Name="id_bureau" ColumnName="id_bureau" />
+                <ScalarProperty Name="id_materiel" ColumnName="id_materiel" />
+                <ScalarProperty Name="date_histoir" ColumnName="date_histoir" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="materiel">
+            <EntityTypeMapping TypeName="SERVICES_RESSOURCES_FINANCIERESModel.materiel">
+              <MappingFragment StoreEntitySet="materiel">
+                <ScalarProperty Name="id_bureau" ColumnName="id_bureau" />
+                <ScalarProperty Name="id_type_materiel" ColumnName="id_type_materiel" />
+                <ScalarProperty Name="id_materiel" ColumnName="id_materiel" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="materiel_difectue">
+            <EntityTypeMapping TypeName="SERVICES_RESSOURCES_FINANCIERESModel.materiel_difectue">
+              <MappingFragment StoreEntitySet="materiel_difectue">
+                <ScalarProperty Name="id_materiel" ColumnName="id_materiel" />
+                <ScalarProperty Name="description_MD" ColumnName="description_MD" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="type_materiel">
+            <EntityTypeMapping TypeName="SERVICES_RESSOURCES_FINANCIERESModel.type_materiel">
+              <MappingFragment StoreEntitySet="type_materiel">
+                <ScalarProperty Name="id_type_materiel" ColumnName="id_type_materiel" />
+                <ScalarProperty Name="libelle" ColumnName="libelle" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="type_service">
+            <EntityTypeMapping TypeName="SERVICES_RESSOURCES_FINANCIERESModel.type_service">
+              <MappingFragment StoreEntitySet="type_service">
+                <ScalarProperty Name="id_service" ColumnName="id_service" />
+                <ScalarProperty Name="nom_type" ColumnName="nom_type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Aucun" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
