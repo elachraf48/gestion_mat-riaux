@@ -1,0 +1,38 @@
+## Project Title: Gestion Matériaux
+
+### Description:
+The Gestion Matériaux project is a web-based application developed as part of a internship. It focuses on managing materials and provides a user-friendly interface for users to interact with the system. The application allows users to register, log in, and perform various material management tasks.
+
+### Features:
+1. User Registration: Users can create an account by providing necessary information such as name, email, and password.
+2. User Authentication: Secure login system for registered users to access the application.
+3. Material Management: Users can add, edit, and delete materials in the system.
+4. Search Functionality: Users can search for specific materials using keywords or filters.
+5. Categorization: Materials can be organized into categories for better organization and retrieval.
+6. User Roles and Permissions: Different user roles such as admin and regular user with varying levels of access and permissions.
+7. Responsive Design: The application is designed to be responsive and compatible with different devices and screen sizes.
+8. Validation and Error Handling: Proper validation and error handling to ensure data integrity and provide a smooth user experience.
+
+### Technologies Used:
+- Front-end: Entity Framework 6.0,Guna UI Framework
+- Back-end: C#
+- Database: SQLServre
+
+### Installation:
+1. Clone the repository from [GitHub](https://github.com/elachraf48/gestion_mat-riaux.git).
+2. Set up a web server with C# support and configure it to serve the application.
+3. Import the provided database schema into your MySQL database.
+4. Update the database connection settings in the application's configuration files.
+5. Launch the application in a web browser.
+
+### Contribution:
+Contributions to the project are welcome. If you find any issues or have suggestions for improvements, please create a new issue on the GitHub repository. You can also submit pull requests with proposed changes.
+
+### License:
+This project is licensed under the [MIT License](LICENSE).
+
+### Contact:
+For any inquiries or further information, please feel free to contact the project maintainer at [achrafelabouye@gmail.com](mailto:achrafelabouye@gmail.com).
+
+---
+Note: This README provides a general overview of the project. For detailed documentation and instructions, please refer to the project repository.
